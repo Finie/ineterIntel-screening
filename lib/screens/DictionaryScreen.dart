@@ -8,8 +8,11 @@ class DictionaryScreen extends StatefulWidget {
 class _DictionaryScreenState extends State<DictionaryScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("This is the Dictionary screen section"),
+    return Scaffold(
+      appBar: AppBar( title: Text("Dictionary"),),
+      body: Container(
+        child: Text("This is the body"),
+      ),
     );
   }
 }

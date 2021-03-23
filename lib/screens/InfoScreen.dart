@@ -8,8 +8,11 @@ class InfoScreen extends StatefulWidget {
 class _InfoScreenState extends State<InfoScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("This is the info screen section"),
+    return Scaffold(
+     appBar: AppBar( title: Text("Info"),),
+      body: Container(
+        child: Text("This is the body"),
+      ),
     );
   }
 }

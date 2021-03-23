@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        accentColor: Color.fromRGBO(236,243,249, 1),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(),
@@ -47,26 +48,30 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       currentIndex = index;
     });
+
+    if(currentIndex == 1){
+      currentIndex = 0;
+      return Navigator.push(
+          context, MaterialPageRoute(builder: (_) => DesignScreen()));
+    }
+
+    else if(currentIndex == 2){
+      currentIndex = 0;
+      return Navigator.push(
+          context, MaterialPageRoute(builder: (_) => ResponseScreen()));
+    }
+
+    else if(currentIndex == 3){
+      currentIndex = 0;
+      return Navigator.push(
+          context, MaterialPageRoute(builder: (_) => DictionaryScreen()));
+    }
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: currentIndex == 0
-            ? Text("Info ")
-            : currentIndex == 1
-                ? Text("Design")
-                : currentIndex == 2
-                    ? Text("Response")
-                    : Text("Dictionary"),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {},
-      //   child: Icon(Icons.add),
-      //   backgroundColor: Colors.red  ,
-      // ),
-      //floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       bottomNavigationBar: BubbleBottomBar(
         opacity: 0.3,
         elevation: 8,
@@ -125,13 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text("Dictionary"))
         ],
       ),
-      body: currentIndex == 0
-          ? InfoScreen()
-          : currentIndex == 1
-              ? DesignScreen()
-              : currentIndex == 2
-                  ? ResponseScreen()
-                  : DictionaryScreen(),
+      body: InfoScreen(),
 
       // This trailing comma makes auto-formatting nicer for build methods.
     );

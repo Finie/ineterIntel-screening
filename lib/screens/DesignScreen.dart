@@ -8,8 +8,11 @@ class DesignScreen extends StatefulWidget {
 class _DesignScreenState extends State<DesignScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("This is the design screen section"),
+    return Scaffold(
+      appBar: AppBar( title: Text("Design"),),
+      body: Container(
+        child: Text("This is the body"),
+      ),
     );
   }
 }
