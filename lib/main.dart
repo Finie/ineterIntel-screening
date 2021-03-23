@@ -2,6 +2,10 @@ import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:screening/screens/DesignScreen.dart';
+import 'package:screening/screens/DictionaryScreen.dart';
+import 'package:screening/screens/InfoScreen.dart';
+import 'package:screening/screens/ResponseScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,28 +24,17 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   int currentIndex;
 
   @override
@@ -54,15 +47,19 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       currentIndex = index;
     });
-    print("The current page index is: " + currentIndex.toString());
-    // Navigator.push(context, MaterialPageRoute(builder: null));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: currentIndex == 0
+            ? Text("Info ")
+            : currentIndex == 1
+                ? Text("Design")
+                : currentIndex == 2
+                    ? Text("Response")
+                    : Text("Dictionary"),
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {},
@@ -72,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       bottomNavigationBar: BubbleBottomBar(
         opacity: 0.3,
+        elevation: 8,
         backgroundColor: Colors.blue,
         borderRadius: BorderRadius.vertical(top: Radius.circular(1.6)),
         currentIndex: currentIndex,
@@ -127,20 +125,13 @@ class _MyHomePageState extends State<MyHomePage> {
               title: Text("Dictionary"))
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
+      body: currentIndex == 0
+          ? InfoScreen()
+          : currentIndex == 1
+              ? DesignScreen()
+              : currentIndex == 2
+                  ? ResponseScreen()
+                  : DictionaryScreen(),
 
       // This trailing comma makes auto-formatting nicer for build methods.
     );
