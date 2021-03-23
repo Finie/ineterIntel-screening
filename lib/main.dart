@@ -6,6 +6,7 @@ import 'package:screening/screens/DesignScreen.dart';
 import 'package:screening/screens/DictionaryScreen.dart';
 import 'package:screening/screens/InfoScreen.dart';
 import 'package:screening/screens/ResponseScreen.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(MyApp());
@@ -51,8 +52,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     if(currentIndex == 1){
       currentIndex = 0;
-      return Navigator.push(
-          context, MaterialPageRoute(builder: (_) => DesignScreen()));
+      return  Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child: DesignScreen()));
+
     }
 
     else if(currentIndex == 2){
@@ -63,8 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     else if(currentIndex == 3){
       currentIndex = 0;
-      return Navigator.push(
-          context, MaterialPageRoute(builder: (_) => DictionaryScreen()));
+
+      return Navigator.push(context, PageTransition(type: PageTransitionType.rotate, duration: Duration(milliseconds: 400), child: DictionaryScreen()));
+
     }
 
   }
