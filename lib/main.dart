@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        accentColor: Color.fromRGBO(236,243,249, 1),
+        accentColor: Color.fromRGBO(236, 243, 249, 1),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: MyHomePage(),
@@ -50,25 +50,27 @@ class _MyHomePageState extends State<MyHomePage> {
       currentIndex = index;
     });
 
-    if(currentIndex == 1){
-      currentIndex = 0;
-      return  Navigator.push(context, PageTransition(type: PageTransitionType.rightToLeftWithFade, child: DesignScreen()));
-
-    }
-
-    else if(currentIndex == 2){
+    if (currentIndex == 1) {
       currentIndex = 0;
       return Navigator.push(
-          context, MaterialPageRoute(builder: (_) => ResponseScreen()));
-    }
-
-    else if(currentIndex == 3){
+          context, MaterialPageRoute(builder: (_) => DesignScreen()));
+    } else if (currentIndex == 2) {
+      currentIndex = 0;
+      return Navigator.push(
+          context,
+          PageTransition(
+              type: PageTransitionType.rightToLeftWithFade,
+              child: ResponseScreen()));
+    } else if (currentIndex == 3) {
       currentIndex = 0;
 
-      return Navigator.push(context, PageTransition(type: PageTransitionType.rotate, duration: Duration(milliseconds: 400), child: DictionaryScreen()));
-
+      return Navigator.push(
+          context,
+          PageTransition(
+              type: PageTransitionType.rotate,
+              duration: Duration(milliseconds: 700),
+              child: DictionaryScreen()));
     }
-
   }
 
   @override
