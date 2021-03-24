@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class DesignScreenTopWidget extends StatefulWidget {
+  final String name;
+
+  DesignScreenTopWidget({Key key, this.name}) : super(key: key);
+
   @override
   _DesignScreenTopWidgetState createState() => _DesignScreenTopWidgetState();
 }
@@ -37,7 +41,7 @@ class _DesignScreenTopWidgetState extends State<DesignScreenTopWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Username Developer",
+                  Text(widget.name,
                       maxLines: 1,
                       style: TextStyle(
                           fontSize: 18.0,

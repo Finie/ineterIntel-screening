@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:screening/models/InputModel.dart';
 import 'package:screening/screens/DesignScreen.dart';
@@ -25,6 +26,11 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              
+              Container(
+                child: Lottie.asset("assets/lottie/loging_in.json"),
+              ),
+
               Container(
                 margin: EdgeInsets.only(
                   left: 16.0,
