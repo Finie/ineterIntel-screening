@@ -36,8 +36,18 @@ class _ResponseScreenState extends State<ResponseScreen> {
       appBar: AppBar(
         title: Text("Dictionary"),
         elevation: 0,
+
       ),
       body: Container(
+
+        padding: EdgeInsets.only(top: 3),
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30.0),
+                topRight: Radius.circular(30.0))),
+
+
         child: Container(
             child: AnimationLimiter(
           child: GridView.builder(
@@ -80,7 +90,8 @@ class _ResponseScreenState extends State<ResponseScreen> {
                                         style: TextStyle(
                                             fontSize: 30.0,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.black12)),
+                                            color: Colors.black12)
+                                    ),
                                   ),
                                 ),
                                 Flexible(
