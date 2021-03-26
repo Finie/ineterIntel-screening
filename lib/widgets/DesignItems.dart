@@ -26,7 +26,8 @@ class _DesignItemsState extends State<DesignItems> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: widget.params.color,
-              )),
+              )
+          ),
           Container(
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.only(left: 16),

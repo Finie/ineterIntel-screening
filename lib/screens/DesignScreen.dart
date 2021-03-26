@@ -47,7 +47,11 @@ class _DesignScreenState extends State<DesignScreen> {
             elevation: 0.0,
           ),
           body: SingleChildScrollView(
-            child: Column(
+            child:
+
+
+            Column(
+
               children: <Widget>[
                 new DesignScreenTopWidget(name: widget.params.name),
 
@@ -119,7 +123,7 @@ class _DesignScreenState extends State<DesignScreen> {
         ),
         body: SingleChildScrollView(
 
-          child: Expanded(
+          child: Center(
 
             child:  Column(
               mainAxisAlignment: MainAxisAlignment.center,

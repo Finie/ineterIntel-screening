@@ -1,26 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:provider_architecture/provider_architecture.dart';
+import 'package:screening/models/ApiResponse.dart';
+import 'package:screening/repository/AppRepository.dart';
+import 'package:screening/widgets/DictionaryItem.dart';
 
-class ResponseScreen extends StatefulWidget {
+class DictionaryScreen extends StatefulWidget {
   @override
-  _ResponseScreenState createState() => _ResponseScreenState();
+  _DictionaryScreenState createState() => _DictionaryScreenState();
 }
 
-class _ResponseScreenState extends State<ResponseScreen> {
-
-
-  final String dictionary = "{'34': 'thirty-four', '90': 'ninety', '91': 'ninety-one', '21': 'twenty-one', '61': 'sixty-one', '9': 'nine', '2': 'two', '6': 'six', '3': 'three','8': 'eight', '80': 'eighty', '81': 'eighty-one', 'Ninety-Nine': '99', 'nine-hundred': '900' }";
-
-  _ResponseScreenState();
-
+class _DictionaryScreenState extends State<DictionaryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Response"),
-      ),
-      body: Container(
-        child: Text("This is the body"),
-      ),
-    );
+        appBar: AppBar(
+          title: Text("Response"),
+        ),
+        body: FutureBuilder<List<ApiResponse>>(
+          future: AppRepository().fetchTodoList(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              showDialog(
+                  context: context,
+                  child: AlertDialog(
+                    title: Text("Error"),
+                    content: Text(snapshot.error.toString()),
+                  ));
+            } else if (snapshot.hasData) {
+              return AnimationLimiter(
+                  child: ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return AnimationConfiguration.staggeredList(
+                          position: index,
+                          duration: const Duration(milliseconds: 300),
+                          child: SlideAnimation(
+                            horizontalOffset: 50.0,
+                            child: FadeInAnimation(
+                              child: Container(
+                                margin: EdgeInsets.only(left: 16, right: 16),
+                                child:
+                                    DictionaryItem(item: snapshot.data[index]),
+                              ),
+                            ),
+                          ),
+                        );
+                      }));
+            }
+
+            return Center(
+              child: CircularProgressIndicator(
+                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.blue)
+              ),
+            );
+          },
+        ));
   }
 }
+
+// return
+//

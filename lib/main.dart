@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:screening/screens/DesignScreen.dart';
-import 'package:screening/screens/DictionaryScreen.dart';
-import 'package:screening/screens/InfoScreen.dart';
 import 'package:screening/screens/ResponseScreen.dart';
+import 'package:screening/screens/InfoScreen.dart';
+import 'package:screening/screens/DictionaryScreen.dart';
 import 'package:page_transition/page_transition.dart';
 
 void main() {
