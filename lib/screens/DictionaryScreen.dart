@@ -36,23 +36,19 @@ class _ResponseScreenState extends State<ResponseScreen> {
       appBar: AppBar(
         title: Text("Dictionary"),
         elevation: 0,
-
       ),
       body: Container(
-
         padding: EdgeInsets.only(top: 3),
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30.0),
                 topRight: Radius.circular(30.0))),
-
-
         child: Container(
             child: AnimationLimiter(
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 200,
+              maxCrossAxisExtent: 180,
             ),
             itemCount: sortedDictionary.length,
             itemBuilder: (context, index) {
@@ -61,7 +57,7 @@ class _ResponseScreenState extends State<ResponseScreen> {
               return AnimationConfiguration.staggeredGrid(
                   position: index,
                   columnCount: 2,
-                  duration: const Duration(milliseconds: 500),
+                  duration: const Duration(milliseconds: 700),
                   child: SlideAnimation(
                       verticalOffset: 50.0,
                       child: FadeInAnimation(
@@ -75,25 +71,10 @@ class _ResponseScreenState extends State<ResponseScreen> {
                           color: Colors.white,
                           elevation: 1.0,
                           child: Container(
-                            height: 200,
                             width: 150,
                             child: Column(
                               children: <Widget>[
-                                Flexible(
-                                  child: Container(
-                                    alignment: Alignment.centerLeft,
-                                    margin: EdgeInsets.only(left: 16),
-                                    child: Text(
-                                        sortedDictionary.entries
-                                            .elementAt(index)
-                                            .key,
-                                        style: TextStyle(
-                                            fontSize: 30.0,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black12)
-                                    ),
-                                  ),
-                                ),
+
                                 Flexible(
                                   child: Container(
                                     alignment: Alignment.centerLeft,
@@ -105,9 +86,24 @@ class _ResponseScreenState extends State<ResponseScreen> {
                                         style: TextStyle(
                                             fontSize: 18.0,
                                             fontWeight: FontWeight.bold,
+                                            color: Colors.black87)),
+                                  ),
+                                ),
+                                Flexible(
+                                  child: Container(
+                                    alignment: Alignment.centerLeft,
+                                    margin: EdgeInsets.only(left: 16),
+                                    child: Text(
+                                        sortedDictionary.entries
+                                            .elementAt(index)
+                                            .key,
+                                        style: TextStyle(
+                                            fontSize: 30.0,
+                                            fontWeight: FontWeight.bold,
                                             color: Colors.black54)),
                                   ),
                                 ),
+
                               ],
                             ),
                           ),

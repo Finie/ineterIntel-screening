@@ -25,13 +25,6 @@ class _InfoScreenState extends State<InfoScreen> with TickerProviderStateMixin {
         ),
         body: Container(
 
-            // padding: EdgeInsets.only(top: 3),
-            // decoration: BoxDecoration(
-            //     color: Colors.white,
-            //     borderRadius: BorderRadius.only(
-            //         topLeft: Radius.circular(30.0),
-            //         topRight: Radius.circular(30.0))),
-            //
             child: SingleChildScrollView(
           child: Column(
             children: <Widget>[

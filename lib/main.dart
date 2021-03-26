@@ -51,19 +51,15 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     if (currentIndex == 1) {
-      currentIndex = 0;
       return Navigator.push(
           context, MaterialPageRoute(builder: (_) => DesignScreen()));
     } else if (currentIndex == 2) {
-      currentIndex = 0;
       return Navigator.push(
           context,
           PageTransition(
               type: PageTransitionType.rightToLeftWithFade,
               child: ResponseScreen()));
     } else if (currentIndex == 3) {
-      currentIndex = 0;
-
       return Navigator.push(
           context,
           PageTransition(
@@ -120,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.restore_page_outlined,
                 color: Colors.white,
               ),
-              title: Text("Response")),
+              title: Text("Dictionary")),
           BubbleBottomBarItem(
               backgroundColor: Colors.white,
               icon: Icon(
@@ -131,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.batch_prediction_outlined,
                 color: Colors.white,
               ),
-              title: Text("Dictionary"))
+              title: Text("Response"))
         ],
       ),
       body: InfoScreen(),
